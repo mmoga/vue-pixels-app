@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    {{color}}
     <ColorPicker :color="color"/>
-    <Canvas/>
+    <Canvas :pixels="pixels"/>
   </div>
 </template>
 
@@ -10,10 +9,17 @@
 import Canvas from "./components/Canvas";
 import ColorPicker from "./components/ColorPicker";
 
+const defaultColor = "white";
+
 export default {
   name: "App",
   data: function() {
-    return { color: "white" };
+    return {
+      color: defaultColor,
+      pixels: Array(30 * 30)
+        .fill()
+        .map(() => defaultColor)
+    };
   },
   components: {
     Canvas,
@@ -22,6 +28,9 @@ export default {
   mounted() {
     this.$root.$on("updatecolor", color => {
       this.color = color;
+    });
+    this.$root.$on("clickedpixel", index => {
+      this.pixels.splice(index, 1, this.color);
     });
   }
 };
