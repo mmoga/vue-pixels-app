@@ -1,5 +1,7 @@
 <template>
-  <p>Canvas</p>
+  <div class="canvas">
+    <Pixel v-for="n in 30*30" :key="n"/>
+  </div>
 </template>
 
 <script>
@@ -12,3 +14,12 @@ export default {
   }
 };
 </script>
+
+<style lang="stylus" scoped>
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+</style>
+
