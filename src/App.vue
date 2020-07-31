@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img width="25%" src="./assets/logo.png">
-    <HelloWorld msg="Hello Vue in CodeSandbox!" />
+    <Canvas/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Canvas from "./components/Canvas";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    Canvas
   }
 };
 </script>
