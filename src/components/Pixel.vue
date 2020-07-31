@@ -1,12 +1,18 @@
 <template>
-  <div :class="['pixel', color]"></div>
+  <div @click="changeColor(color)" :class="['pixel', color, current ? 'current' : '']"></div>
 </template>
 
 <script>
 export default {
   name: "Pixel",
   props: {
-    color: String
+    color: String,
+    current: Boolean
+  },
+  methods: {
+    changeColor: function(color) {
+      this.$root.$emit("updatecolor", color);
+    }
   }
 };
 </script>
@@ -18,6 +24,10 @@ export default {
   width: 30px;
   height: 30px;
   box-sizing: border-box;
+
+  .current {
+    border: 4px solid yellow;
+  }
 }
 
 .white {
