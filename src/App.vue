@@ -10,7 +10,7 @@ import Canvas from "./components/Canvas";
 import ColorPicker from "./components/ColorPicker";
 
 const defaultColor = "white";
-
+const ls = localStorage;
 export default {
   name: "App",
   data: function() {
@@ -31,7 +31,11 @@ export default {
     });
     this.$root.$on("clickedpixel", index => {
       this.pixels.splice(index, 1, this.color);
+      ls.setItem(index, this.color);
     });
+    this.$root.$on('savedpixel', (savedIndex, savedColor) => {
+      this.pixels.splice(savedIndex, 1, savedColor)
+    })
   }
 };
 </script>
